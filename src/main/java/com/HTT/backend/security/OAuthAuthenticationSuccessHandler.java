@@ -37,7 +37,7 @@ public class OAuthAuthenticationSuccessHandler implements AuthenticationSuccessH
             Authentication authentication) throws IOException, ServletException {
         try {
             DefaultOAuth2User oAuthUser = (DefaultOAuth2User) authentication.getPrincipal();
-            String name = oAuthUser.getName();
+            String name = oAuthUser.getAttribute("name").toString();
             String email = oAuthUser.getAttribute("email").toString();
             System.out.println(name + "  " + email);
 
@@ -50,7 +50,7 @@ public class OAuthAuthenticationSuccessHandler implements AuthenticationSuccessH
             if (user == null) {
                 System.out.println("new user");
                 String encodedPassword = passwordEncoder.encode("gw(8ehnbeiub*(*7766hspoiaw)(^6sa5&s*%78iofgwskl23gs");
-                user = new User(name, email, encodedPassword, email.equals("achirjain11@gmail.com"));
+                user = new User(name, email, encodedPassword, email.equals("achirjain11@gmail.com"), 1);
                 user = userService.saveUser(user);
                 System.out.println("saved user: " + user);
             }

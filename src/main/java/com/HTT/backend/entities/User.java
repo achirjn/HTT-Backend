@@ -88,11 +88,12 @@ public class User implements UserDetails{
         this.accountVerified = accountVerified;
         this.adminPermit = false;
     }
-    public User(String name, String email,String password, boolean adminPermit) {
+    public User(String name, String email,String password, boolean adminPermit, int accountVerified) {
         this.adminPermit = adminPermit;
         this.email = email;
         this.name = name;
         this.password = password;
+        this.accountVerified = accountVerified;
     }
 
     @Override
